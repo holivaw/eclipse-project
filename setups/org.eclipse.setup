@@ -43,7 +43,5 @@
   <discoverablePackage
       href="models/WorkingSets.ecore#/"/>
   <productCatalog
-      href="org.eclipse.products.setup#/"/>>
-  <projectCatalog
-      href="org.eclipse.projects.setup#/"/>
+      href="org.eclipse.products.setup#/"/>
 </setup:Index>
