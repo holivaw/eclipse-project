@@ -448,10 +448,6 @@
         <requirement
             name="org.eclipse.oomph.version.feature.group"/>
         <requirement
-            name="org.eclipse.orbit.build.feature.set1.feature.group"/>
-        <requirement
-            name="org.eclipse.orbit.releng.recipes.feature.aggregation.feature.group"/>
-        <requirement
             name="org.eclipse.rse.feature.group"/>
         <requirement
             name="org.eclipse.rse.core.feature.group"/>
@@ -603,8 +599,6 @@
             url="https://download.eclipse.org/justj/jres/latest"/>
         <repository
             url="https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/latest"/>
-        <repository
-            url="https://download.eclipse.org/tools/orbit/downloads/drops/R20210602031627/repository"/>
         <repository
             url="https://download.eclipse.org/shellwax/releases/latest"/>
         <repository
