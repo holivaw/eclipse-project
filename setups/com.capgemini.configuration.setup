@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:Configuration
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    label="com.capgemini.configuration">
+  <installation
+      name="com.capgemini.configuration.installation"
+      label="com.capgemini.configuration Installation">
+    <productVersion
+        href="index:/org.eclipse.setup#//@productCatalogs[name='org.eclipse.products']/@products[name='epp.package.jee']/@versions[name='latest.released']"/>
+    <description>The installation.</description>
+  </installation>
+  <workspace
+      name="com.capgemini.configuration.workspace"
+      label="com.capgemini.configuration Workspace">
+    <description>The workspace.</description>
+  </workspace>
+  <description>The com.capgemini.configuration.</description>
+</setup:Configuration>
