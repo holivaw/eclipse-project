@@ -99,6 +99,7 @@
 				<requirement name="org.eclipse.datatools.enablement.mysql.feature.feature.group"/>
 				<requirement name="org.eclipse.datatools.enablement.oda.designer.feature.feature.group"/>
 				<requirement name="org.eclipse.datatools.enablement.oda.feature.feature.group"/>
+				<requirement name="org.eclipse.datatools.enablement.oda.feature.feature.group"/>
 				<requirement name="org.eclipse.datatools.enablement.oracle.feature.feature.group"/>
 				<requirement name="org.eclipse.datatools.enablement.postgresql.feature.feature.group"/>
 				<requirement name="org.eclipse.datatools.enablement.sap.feature.feature.group"/>
