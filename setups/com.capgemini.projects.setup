@@ -16,7 +16,7 @@
 			<value>https://projects.eclipse.org/</value>
 		</detail>
 	</annotation>
-setupTask xsi:type="setup:CompoundTask"
+	<setupTask xsi:type="setup:CompoundTask"
 	           name="Global Variables">
 		<setupTask xsi:type="setup:VariableTask"
 		           name="git.user.id"
