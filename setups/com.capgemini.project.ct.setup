@@ -163,12 +163,11 @@
         value="${scope.project.stream.name}"/>
     <setupTask
         xsi:type="setup:VariableTask"
-        name="git.container.root"
-        value="C:\sources"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
         name="git.clone.chesstournament.all.location"
-        value="${git.container?root/}${installation.id}"/>
+        value="${git.container.root/}${installation.id}"
+        label="Project source location">
+      <description>Project source location</description>
+    </setupTask>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
