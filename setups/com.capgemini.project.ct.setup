@@ -335,13 +335,6 @@
         rootFolder="${git.clone.chesstournament.all.location}"
         locateNestedProjects="true"/>
   </setupTask>
-  <setupTask
-      xsi:type="setup:EclipseIniTask"
-      option="-Doomph.redirection.eclipse.project"
-      value="=https://git.eclipse.org/c/holivaw/eclipse-project.git/plain//EclipseProject.setup->${git.clone.eclipse.project.location|uri}//EclipseProject.setup"
-      vm="true">
-    <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
-  </setupTask>
   <stream name="master"
       label="master">
     <setupTask
@@ -350,6 +343,13 @@
         location="${jre.location-11}"
         name="JRE for JavaSE-11"/>
   </stream>
+  <setupTask
+      xsi:type="setup:EclipseIniTask"
+      option="-Doomph.redirection.eclipse.project"
+      value="=https://git.eclipse.org/c/holivaw/eclipse-project.git/plain//EclipseProject.setup->${git.clone.eclipse.project.location|uri}//EclipseProject.setup"
+      vm="true">
+    <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
+  </setupTask>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='com.capgemini']"/>
