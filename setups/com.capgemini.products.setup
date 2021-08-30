@@ -10,8 +10,16 @@
   <annotation
       source="http://www.eclipse.org/oomph/setup/BrandingInfo"/>
   <setupTask
+      xsi:type="setup:EclipseIniTask"
+      option="-Doomph.setup"
+      value="=true"
+      vm="true"/>
+  <setupTask
       xsi:type="setup:InstallationTask"
       id="installation"/>
+  <setupTask
+      xsi:type="setup:WorkspaceTask"
+      location="${install.root/}workspace-${installation.id}"/>
   <setupTask
       xsi:type="setup.p2:P2Task">
     <requirement
@@ -182,7 +190,7 @@
             versionRange="[1.0.0,2.0.0)"/>
         <requirement
             name="net.sourceforge.pmd.eclipse.feature.group"
-            versionRange="[4.26.0,5.0.0)"/>
+            versionRange="[4.27.0,5.0.0)"/>
         <requirement
             name="org.aspectj.feature.group"
             versionRange="[1.9.0,2.0.0)"/>
