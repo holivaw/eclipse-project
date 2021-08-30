@@ -369,8 +369,8 @@
       label="master">
     <setupTask
         xsi:type="setup:EclipseIniTask"
-        option="-Doomph.redirection.eclipse.project"
-        value="=https://git.eclipse.org/c/holivaw/eclipse-project.git/plain//EclipseProject.setup->${git.clone.eclipse.project.location|uri}//EclipseProject.setup"
+        option="-Doomph.redirection.fr.chess-tournament-all"
+        value="=https://raw.githubusercontent.com/holivaw/chess-tournament-all//master/com.capgemini.ct.setup->${git.clone.chesstournament.all.location|uri}//com.capgemini.ct.setup"
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
     </setupTask>

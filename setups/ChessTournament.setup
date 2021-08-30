@@ -11,8 +11,8 @@
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
     xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
-    name="eclipse.project"
-    label="Eclipse Project">
+    name="fr.chess-tournament-all"
+    label="Chess Tournament">
   <setupTask
       xsi:type="jdt:JRETask"
       version="JavaSE-1.8"
@@ -57,17 +57,17 @@
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
-      id="git.clone.eclipse.project"
-      remoteURI="holivaw/eclipse-project">
+      id="git.clone.fr.chess-tournament-all"
+      remoteURI="holivaw/chess-tournament-all">
     <annotation
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
       <detail
           key="inherit">
-        <value>eclipse.git.remoteURIs</value>
+        <value>github.remoteURIs</value>
       </detail>
       <detail
           key="label">
-        <value>${scope.project.label} Git repository</value>
+        <value>${scope.project.label} Github repository</value>
       </detail>
       <detail
           key="target">
@@ -86,175 +86,129 @@
       <requirement
           name="*"/>
       <sourceLocator
-          rootFolder="${git.clone.eclipse.project.location}"
+          rootFolder="${git.clone.fr.chess-tournament-all.location}"
           locateNestedProjects="true"/>
       <repositoryList
           name="2021-09">
         <repository
             url="http://download.eclipse.org/releases/2021-09"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2021-06">
         <repository
             url="http://download.eclipse.org/releases/2021-06"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2021-03">
         <repository
             url="http://download.eclipse.org/releases/2021-03"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2020-12">
         <repository
             url="http://download.eclipse.org/releases/2020-12"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2020-09">
         <repository
             url="http://download.eclipse.org/releases/2020-09"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2020-06">
         <repository
             url="http://download.eclipse.org/releases/2020-06"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2020-03">
         <repository
             url="http://download.eclipse.org/releases/2020-03"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2019-12">
         <repository
             url="http://download.eclipse.org/releases/2019-12"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2019-09">
         <repository
             url="http://download.eclipse.org/releases/2019-09"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2019-06">
         <repository
             url="http://download.eclipse.org/releases/2019-06"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2019-03">
         <repository
             url="http://download.eclipse.org/releases/2019-03"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2018-12">
         <repository
             url="http://download.eclipse.org/releases/2018-12"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="2018-09">
         <repository
             url="http://download.eclipse.org/releases/2018-09"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="Photon">
         <repository
             url="http://download.eclipse.org/releases/photon"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="Oxygen">
         <repository
             url="http://download.eclipse.org/releases/oxygen"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="Neon">
         <repository
             url="http://download.eclipse.org/releases/neon"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="Mars">
         <repository
             url="http://download.eclipse.org/releases/mars"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="Luna">
         <repository
             url="http://download.eclipse.org/releases/luna"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="Kepler">
         <repository
             url="http://download.eclipse.org/releases/kepler"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="Juno">
         <repository
             url="http://download.eclipse.org/releases/juno"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="Indigo">
         <repository
             url="http://download.eclipse.org/releases/indigo"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="Helios">
         <repository
             url="http://download.eclipse.org/releases/helios"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
       <repositoryList
           name="Galileo">
         <repository
             url="http://download.eclipse.org/releases/galileo"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
       </repositoryList>
     </targlet>
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
     <workingSet
-        name="${scope.project.label}">
+        name="${scope.project.name}">
       <predicate
           xsi:type="predicates:AndPredicate">
         <operand
@@ -268,14 +222,14 @@
       label="Master">
     <setupTask
         xsi:type="setup:EclipseIniTask"
-        option="-Doomph.redirection.eclipse.project"
-        value="=https://git.eclipse.org/c/holivaw/eclipse-project.git/plain//EclipseProject.setup->${git.clone.eclipse.project.location|uri}//EclipseProject.setup"
+        option="-Doomph.redirection.fr.chess-tournament-all"
+        value="=https://raw.githubusercontent.com/holivaw/chess-tournament-all/master//ChessTournament.setup->${git.clone.fr.chess-tournament-all.location|uri}//ChessTournament.setup"
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
     </setupTask>
   </stream>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
-      href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
-  <description>Eclipse Project provides cool stuff.</description>
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='com.github']"/>
+  <description>Chess Tournament provides cool stuff.</description>
 </setup:Project>
