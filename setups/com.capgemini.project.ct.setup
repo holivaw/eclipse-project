@@ -165,16 +165,11 @@
         value="${scope.project.stream.name}"/>
     <setupTask
         xsi:type="setup:VariableTask"
-        name="git.clone.chesstournament.all.location"
+        name="git.clone.chesstournament.location"
         value="${git.container.root/}${installation.id}"
         label="Project source location">
       <description>Project source location</description>
     </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="git.location.root"
-        value="C:\sources"
-        label="Git sources"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -317,7 +312,7 @@
   <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone.chesstournament.all"
-      location="${git.container.root}"
+      location="${git.clone.chesstournament.location}"
       remoteURI="https://github.com/h_olivaw/chess-tournament-all.git"
       pushURI="">
     <annotation
@@ -335,12 +330,12 @@
         <value>remoteURI</value>
       </detail>
     </annotation>
-    <description>Chess Tournament</description>
+    <description>Chess Tournament All</description>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone.chesstournament.serverboot"
-      location="${git.container.root}"
+      location="${git.clone.chesstournament.location}"
       remoteURI="https://github.com/h_olivaw/chess-tournament-server-boot.git">
     <annotation
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
@@ -357,7 +352,7 @@
         <value>remoteURI</value>
       </detail>
     </annotation>
-    <description>Chess Tournament</description>
+    <description>Chess Tournament Server Boot</description>
   </setupTask>
   <setupTask
       xsi:type="maven:MavenImportTask">

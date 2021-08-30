@@ -545,7 +545,7 @@
     <setupTask
         xsi:type="setup:VariableTask"
         name="workspace.location"
-        value="C:\products\wokspaces\${application.id}"
+        value="C:\products\ide\wokspaces\${application.id}"
         label="Workspace location"/>
   </setupTask>
   <setupTask
