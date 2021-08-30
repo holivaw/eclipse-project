@@ -184,17 +184,28 @@
             name="net.sourceforge.pmd.eclipse.feature.group"
             versionRange="[4.26.0,5.0.0)"/>
         <requirement
-            name="org.eclipse.e4.core.tools.feature.feature.group"
-            versionRange="[4.20.0,5.0.0)"/>
+            name="org.aspectj.feature.group"
+            versionRange="[1.9.0,2.0.0)"/>
+        <requirement
+            name="org.eclipse.ajdt.feature.group"/>
         <requirement
             name="org.eclipse.buildship.feature.group"
             versionRange="[3.1.0,4.0.0)"/>
+        <requirement
+            name="org.eclipse.contribution.weaving.feature.group"
+            versionRange="[2.2.0,3.0.0)"/>
+        <requirement
+            name="org.eclipse.contribution.xref.feature.group"
+            versionRange="[2.2.0,3.0.0)"/>
         <requirement
             name="org.eclipse.collections.feature.feature.group"
             versionRange="[10.4.0,11.0.0)"/>
         <requirement
             name="org.eclipse.core.runtime.feature.feature.group"
             versionRange="[1.2.0,2.0.0)"/>
+        <requirement
+            name="org.eclipse.e4.core.tools.feature.feature.group"
+            versionRange="[4.20.0,5.0.0)"/>
         <requirement
             name="org.eclipse.ecf.core.feature.feature.group"
             versionRange="[1.5.0,2.0.0)"/>
@@ -1020,6 +1031,12 @@
             name="org.scala-ide.sdt.feature.feature.group"
             versionRange="[4.7.0,5.0.0)"/>
         <requirement
+            name="org.scala-ide.sdt.weaving.feature.feature.group"
+            versionRange="[4.7.0,5.0.0)"/>
+        <requirement
+            name="org.scala.tools.eclipse.search.feature.feature.group"
+            versionRange="[0.6.0,1.0.0)"/>
+        <requirement
             name="org.sonarlint.eclipse.feature.feature.group"
             versionRange="[6.0.0,7.0.0)"/>
         <requirement
@@ -1086,6 +1103,8 @@
             url="https://download.eclipse.org/shellwax/releases/latest"/>
         <repository
             url="https://download.eclipse.org/efxclipse/updates-released/3.7.0/site"/>
+        <repository
+            url="http://download.eclipse.org/tools/ajdt/410/dev/update"/>
         <repository
             url="https://download.springsource.com/release/TOOLS/sts4/update/latest"/>
         <repository
