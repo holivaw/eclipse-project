@@ -25,6 +25,6 @@
 	<discoverablePackage href="models/WorkingSets.ecore#/"/>
 	<productCatalog href="org.eclipse.products.setup#/"/>
 	<productCatalog href="com.capgemini.products.setup#/"/>
-	<projectCatalog href="redirectable.products.setup#/"/>
+	<productCatalog href="redirectable.products.setup#/"/>
 	<projectCatalog href="redirectable.projects.setup#/"/>
 </setup:Index>

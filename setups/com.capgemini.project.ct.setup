@@ -155,6 +155,10 @@
     </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
+        name="workspace.location"
+        value="${osgi.instance.area|trimTrailingSlashes} "/>
+    <setupTask
+        xsi:type="setup:VariableTask"
         name="git.checkout.branch"
         value="${scope.project.stream.name}"/>
     <setupTask
@@ -163,8 +167,7 @@
         value="C:\sources"/>
     <setupTask
         xsi:type="setup:VariableTask"
-        name="git.checkout.branch"
-        value="master"/>
+        name="git.clone.chesstournament.all.location"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
