@@ -22,41 +22,66 @@
       xsi:type="setup:CompoundTask"
       name="Global variables">
     <setupTask
-        xsi:type="setup:VariableTask"
-        name="github.user.id"
-        label="Github user ID"/>
+        xsi:type="setup:CompoundTask"
+        name="Git">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="git.user.id"
+          defaultValue="anonymous"
+          label="Eclipse Git/Gerrit user ID">
+        <description>The user ID of the Eclipse Git/Gerrit account</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="git.author.name"
+          label="Eclipse author name for Git/Gerrit">
+        <description>The author name used for Git/Gerrit commits</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="git.author.email"
+          label="Eclipse author email for Git/Gerrit">
+        <description>The email address associated with Git/Gerrit commits</description>
+      </setupTask>
+    </setupTask>
     <setupTask
-        xsi:type="setup:VariableTask"
-        name="github.author.name"
-        label="Github author name"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="github.author.email"
-        label="Github author email"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="github.remoteURIs"
-        label="Github repository">
-      <choice
-          value="git@github.com:@{remoteURI}.git"
-          label="Git (read-write)"/>
-      <choice
-          value="https://${github.user.id}@github.com/@{remoteURI}.git"
-          label="HTTPS (read-write)"/>
-      <choice
-          value="https://github.com/@{remoteURI}.git"
-          label="HTTP (read-only, anonymous)"/>
-      <description>Choose from the available Github URIs</description>
+        xsi:type="setup:CompoundTask"
+        name="Github">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.user.id"
+          label="Github user ID">
+        <description>The Github user ID</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.author.name"
+          label="Github author name"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.author.email"
+          label="Github author email"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.remoteURIs"
+          label="Github repository">
+        <choice
+            value="git@github.com:@{remoteURI}.git"
+            label="Git (read-write)"/>
+        <choice
+            value="https://${github.user.id}@github.com/@{remoteURI}.git"
+            label="HTTPS (read-write)"/>
+        <choice
+            value="http://github.com/@{remoteURI}.git"
+            label="HTTP (read-only, anonymous)"/>
+        <description>Choose from the available Github URIs</description>
+      </setupTask>
     </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
-        name="git.checkout.branch"
-        value="${scope.project.stream.name}"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
         name="eclipse.latest.p2"
-        value="http://download.eclipse.org/eclipse/updates/4.21-I-builds"
-        label="Eclipse Latest I-Build p2 Repository - 4.21">
+        value="http://download.eclipse.org/eclipse/updates/4.20-I-builds"
+        label="Eclipse Latest I-Build p2 Repository - 4.20">
       <description>The update site of the latest Eclipse project's builds, typically an I-Build for the next release</description>
     </setupTask>
     <setupTask
@@ -69,7 +94,7 @@
     <setupTask
         xsi:type="setup:VariableTask"
         name="eclipse.target.platform"
-        defaultValue="None"
+        defaultValue="2021-06"
         storageURI="scope://Workspace"
         label="Target Platform">
       <annotation
@@ -85,7 +110,7 @@
     <setupTask
         xsi:type="setup:VariableTask"
         name="eclipse.target.platform.latest"
-        value="2021-09"
+        value="2021-06"
         storageURI="scope://Workspace"
         label="Target Platform Latest">
       <annotation
@@ -114,69 +139,6 @@
           value="2021-06"
           label="Eclipse 2021-06 - 4.20"/>
       <choice
-          value="2021-03"
-          label="Eclipse 2021-03 - 4.19"/>
-      <choice
-          value="2020-12"
-          label="Eclipse 2020-12 - 4.18"/>
-      <choice
-          value="2020-09"
-          label="Eclipse 2020-09 - 4.17"/>
-      <choice
-          value="2020-06"
-          label="Eclipse 2020-06 - 4.16"/>
-      <choice
-          value="2020-03"
-          label="Eclipse 2020-03 - 4.15"/>
-      <choice
-          value="2019-12"
-          label="Eclipse 2019-12 - 4.14"/>
-      <choice
-          value="2019-09"
-          label="Eclipse 2019-09 - 4.13"/>
-      <choice
-          value="2019-06"
-          label="Eclipse 2019-06 - 4.12"/>
-      <choice
-          value="2019-03"
-          label="Eclipse 2019-03 - 4.11"/>
-      <choice
-          value="2018-12"
-          label="Eclipse 2018-12 - 4.10"/>
-      <choice
-          value="2018-09"
-          label="Eclipse 2018-09 - 4.9"/>
-      <choice
-          value="Photon"
-          label="Eclipse Photon- 4.8"/>
-      <choice
-          value="Oxygen"
-          label="Eclipse Oxygen - 4.7"/>
-      <choice
-          value="Neon"
-          label="Eclipse Neon - 4.6"/>
-      <choice
-          value="Mars"
-          label="Eclipse Mars - 4.5"/>
-      <choice
-          value="Luna"
-          label="Eclipse Luna - 4.4"/>
-      <choice
-          value="Kepler"
-          label="Eclipse Kepler - 4.3"/>
-      <choice
-          value="Juno"
-          label="Eclipse Juno - 4.2"/>
-      <choice
-          value="Indigo"
-          label="Eclipse Indigo - 3.7"/>
-      <choice
-          value="Helios"
-          label="Eclipse Helios - 3.6"/>
-      <choice
-          value="Galileo"
-          label="Eclipse Galileo - 3.5"/>
-      <choice
           value="None"
           label="None"/>
       <description>Choose the compatibility level of the target platform for the modular API baseline</description>
@@ -191,6 +153,18 @@
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
       <description>The compatibility level of the target platform for the modular API baseline for the most recent released version of the platform.  It will be updated to reference the most recently released stream of the platform. This may be used to initialize the value of the eclipse.api.baseline.target.platform variable.</description>
     </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="git.checkout.branch"
+        value="${scope.project.stream.name}"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="git.container.root"
+        value="C:\sources"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="git.checkout.branch"
+        value="master"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -239,6 +213,14 @@
           key="/instance/org.eclipse.pde.api.tools/missing_default_api_profile"
           value="Ignore"/>
     </setupTask>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:TextModifyTask"
+      url="configuration:/config.ini">
+    <modification
+        pattern="osgi\.instance\.area\.default=(@user\.home/workspace)">
+      <substitution>${workspace.location|path}</substitution>
+    </modification>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -291,17 +273,23 @@
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
-      id="ct.git.clone"
-      location="C:\sources"
-      remoteURI="holivaw/chess-tournament-all"
-      pushURI=""
-      checkoutBranch="${git.checkout.branch}">
+      id="git.clone.chesstournament.all"
+      location="${git.container.root}"
+      remoteURI="https://github.com/h_olivaw/chess-tournament-all.git"
+      pushURI="">
+    <description>Chess Tournament</description>
+  </setupTask>
+  <setupTask
+      xsi:type="git:GitCloneTask"
+      id="git.clone.chesstournament.serverboot"
+      location="${git.container.root}"
+      remoteURI="https://github.com/h_olivaw/chess-tournament-server-boot.git">
     <description>Chess Tournament</description>
   </setupTask>
   <setupTask
       xsi:type="maven:MavenImportTask">
     <sourceLocator
-        rootFolder="${git.container.root/}${@id.remoteURI|gitRepository/}${@id.checkoutBranch}"
+        rootFolder="${git.clone.chesstournament.all.location}"
         locateNestedProjects="true"/>
   </setupTask>
   <stream name="master"
