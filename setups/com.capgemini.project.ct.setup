@@ -170,6 +170,11 @@
         label="Project source location">
       <description>Project source location</description>
     </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="git.location.root"
+        value="C:\sources"
+        label="Git sources"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
