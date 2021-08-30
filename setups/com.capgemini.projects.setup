@@ -1,453 +1,601 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<setup:ProjectCatalog xmi:version="2.0"
-                      xmlns:xmi="http://www.omg.org/XMI"
-                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                      xmlns:pde="http://www.eclipse.org/oomph/setup/pde/1.0"
-                      xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
-                      xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
-                      xsi:schemaLocation="http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore"
-                      name="com.capgemini"
-                      label="Capgemini Projects">
-	<annotation source="http://www.eclipse.org/oomph/setup/BrandingInfo">
-		<detail key="imageURI">
-			<value>platform:/plugin/org.eclipse.oomph.setup.ui/icons/committers.png</value>
-		</detail>
-		<detail key="siteURI">
-			<value>https://projects.eclipse.org/</value>
-		</detail>
-	</annotation>
-	<setupTask xsi:type="setup:CompoundTask"
-	           name="Global Variables">
-		<setupTask xsi:type="setup:VariableTask"
-		           name="git.user.id"
-		           defaultValue="anonymous"
-		           label="Eclipse Git/Gerrit user ID">
-			<description>The user ID of the Eclipse Git/Gerrit account, i.e., the 'Username' of your profile at https://git.eclipse.org/r/settings but not the numeric ID, the Email, nor the Full name of your profile</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="git.author.name"
-		           label="Eclipse author name for Git/Gerrit">
-			<description>The author name used for Git/Gerrit commits</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="git.author.email"
-		           label="Eclipse author email for Git/Gerrit">
-			<description>The email address associated with Git/Gerrit commits</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="bugzilla.id"
-		           defaultValue="anonymous"
-		           label="Eclipse user email for Bugzilla/Jenkins/Jiro">
-			<description>The email associated with the Eclipse Bugzilla/Jenkins/Jiro account</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           type="PASSWORD"
-		           name="eclipse.user.password"
-		           label="Eclipse password for Bugzilla/Jenkins/Jiro">
-			<annotation source="http://www.eclipse.org/oomph/setup/PasswordVerification">
-				<detail key="type">
-					<value>form</value>
-				</detail>
-				<detail key="form.url">
-					<value>https://accounts.eclipse.org/</value>
-				</detail>
-				<detail key="form.parameters">
-					<value>name pass op form_id</value>
-				</detail>
-				<detail key="form.secure.parameters">
-					<value>pass</value>
-				</detail>
-				<detail key="form.filter">
-					<value>name=anonymous\&amp;.*</value>
-				</detail>
-				<detail key="form.parameter.name">
-					<value>$${bugzilla.id}</value>
-				</detail>
-				<detail key="form.parameter.pass">
-					<value>$${value}</value>
-				</detail>
-				<detail key="form.parameter.op">
-					<value>Sign in</value>
-				</detail>
-				<detail key="form.parameter.form_id">
-					<value>user_login</value>
-				</detail>
-				<detail key="form.verification.matches">
-					<value>&lt;https://www.eclipse.org/user/.*>; rel=&quot;canonical&quot;.*</value>
-				</detail>
-				<detail key="form.ok">
-					<value>Valid password for $${form.parameter.name} at $${form.url}.</value>
-				</detail>
-				<detail key="form.info">
-					<value>Validate the password for $${form.parameter.name} at $${form.url}.</value>
-				</detail>
-				<detail key="form.warning">
-					<value>Unable to validate the password for $${form.parameter.name} because $${form.url} is unreachable.</value>
-				</detail>
-				<detail key="form.error">
-					<value>Invalid password for $${form.parameter.name} at $${form.url}.</value>
-				</detail>
-			</annotation>
-			<annotation source="http://www.eclipse.org/oomph/setup/PasswordVerification">
-				<detail key="type">
-					<value>form</value>
-				</detail>
-				<detail key="form.url">
-					<value>https://git.eclipse.org/r/login/</value>
-				</detail>
-				<detail key="form.parameters">
-					<value>username password submit</value>
-				</detail>
-				<detail key="form.secure.parameters">
-					<value>password</value>
-				</detail>
-				<detail key="form.filter">
-					<value>username=anonymous\&amp;.*</value>
-				</detail>
-				<detail key="form.parameter.username">
-					<value>$${bugzilla.id}</value>
-				</detail>
-				<detail key="form.parameter.password">
-					<value>$${value}</value>
-				</detail>
-				<detail key="form.parameter.submit">
-					<value>Sign In</value>
-				</detail>
-				<detail key="form.verification.url">
-					<value>https://git.eclipse.org/r/accounts/$${git.user.id|username}</value>
-				</detail>
-				<detail key="form.verification.matches">
-					<value>.*&quot;email&quot;: &quot;$${form.parameter.username}&quot;.*</value>
-				</detail>
-				<detail key="form.ok">
-					<value>Valid password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
-				</detail>
-				<detail key="form.info">
-					<value>Validate the password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
-				</detail>
-				<detail key="form.warning">
-					<value>Unable to validate the password for account $${git.user.id} of $${form.parameter.username} because $${form.url} is unreachable.</value>
-				</detail>
-				<detail key="form.error">
-					<value>Invalid password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
-				</detail>
-			</annotation>
-			<annotation source="http://www.eclipse.org/oomph/setup/PasswordVerification">
-				<detail key="type">
-					<value>form-post</value>
-				</detail>
-				<detail key="form.url">
-					<value>https://accounts.eclipse.org/</value>
-				</detail>
-				<detail key="form.filter">
-					<value>anonymous</value>
-				</detail>
-				<detail key="form.user">
-					<value>$${bugzilla.id}</value>
-				</detail>
-				<detail key="form.password">
-					<value>$${value}</value>
-				</detail>
-				<detail key="form.response.location.matches">
-					<value>https://accounts.eclipse.org/users/$${git.user.id}</value>
-				</detail>
-				<detail key="form.ok">
-					<value>Valid password for account $${git.user.id} of $${form.user} at $${form.url}.</value>
-				</detail>
-				<detail key="form.info">
-					<value>Validate the password for account $${git.user.id} of $${form.user} at $${form.url}.</value>
-				</detail>
-				<detail key="form.warning">
-					<value>Unable to validate the password for account $${git.user.id} of $${form.user} because $${form.url} is unreachable.</value>
-				</detail>
-				<detail key="form.error">
-					<value>Invalid password for account $${git.user.id} of $${form.user} at $${form.url}.</value>
-				</detail>
-			</annotation>
-			<annotation source="http://www.eclipse.org/oomph/setup/PasswordVerification">
-				<detail key="type">
-					<value>form-post</value>
-				</detail>
-				<detail key="form.url">
-					<value>https://accounts.eclipse.org/</value>
-				</detail>
-				<detail key="form.filter">
-					<value>anonymous</value>
-				</detail>
-				<detail key="form.user">
-					<value>$${bugzilla.id}</value>
-				</detail>
-				<detail key="form.password">
-					<value>$${value}</value>
-				</detail>
-				<detail key="form.response.location.matches">
-					<value>https://accounts.eclipse.org/users/.*</value>
-				</detail>
-				<detail key="form.ok">
-					<value>Valid password for $${form.user} at $${form.url}.</value>
-				</detail>
-				<detail key="form.info">
-					<value>Validate the password for $${form.user} at $${form.url}.</value>
-				</detail>
-				<detail key="form.warning">
-					<value>Unable to validate the password for $${form.user} because $${form.url} is unreachable.</value>
-				</detail>
-				<detail key="form.error">
-					<value>Invalid password for $${form.user} at $${form.url}.</value>
-				</detail>
-			</annotation>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="eclipse.gerrit.uri.pattern"
-		           value="(https|ssh)://([^@/]+@)?(git.eclipse.org:29418/.*|git.eclipse.org/r/.*)"/>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="eclipse.git.authentication.style"
-		           value="anonymous"
-		           label="Eclipse Git Authentication Style">
-			<annotation source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-			<choice value="anonymous"
-			        label="Anonymous Authentication"/>
-			<choice value="ssh"
-			        label="SSH Authentication"/>
-			<choice value="credentials"
-			        label="Credentials Authentication"/>
-			<description>Choose the style of authentication used to access Eclipse Git clones</description>
-		</setupTask>
-		<setupTask xsi:type="setup:CompoundTask"
-		           filter="(&amp;(!(eclipse.git.authentication.style=ssh))(!(eclipse.git.authentication.style=credentials)))"
-		           name="Anonymous Git Authentication">
-			<setupTask xsi:type="setup:VariableTask"
-			           name="eclipse.gerrit.remoteURIs"
-			           label="Eclipse Gerrit Repository">
-				<choice value="https://git.eclipse.org/r/@{remoteURI}"
-				        label="HTTPS (read-only, anonymous, Gerrit)"/>
-				<choice value="ssh://${git.user.id|username}@git.eclipse.org:29418/@{remoteURI}"
-				        label="SSH (read-write, Gerrit)">
-					<annotation source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-				</choice>
-				<choice value="https://${git.user.id|username}@git.eclipse.org/r/@{remoteURI}"
-				        label="HTTPS (read-write, Gerrit)">
-					<annotation source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-				</choice>
-				<description>Choose from the available remote Gerrit URIs</description>
-			</setupTask>
-			<setupTask xsi:type="setup:VariableTask"
-			           name="eclipse.git.remoteURIs"
-			           label="Eclipse Git Repository">
-				<choice value="http://git.eclipse.org/gitroot/@{remoteURI}.git"
-				        label="HTTP (read-only, anonymous, direct)"/>
-				<choice value="ssh://${git.user.id|username}@git.eclipse.org/gitroot/@{remoteURI}.git"
-				        label="SSH (read-write, direct)">
-					<annotation source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-				</choice>
-				<choice value="git://git.eclipse.org/gitroot/@{remoteURI}"
-				        label="Git (read-only, anonymous, direct)"/>
-				<description>Choose from the available Git URIs</description>
-			</setupTask>
-		</setupTask>
-		<setupTask xsi:type="setup:CompoundTask"
-		           filter="(eclipse.git.authentication.style=ssh)"
-		           name="SSH Authentication">
-			<setupTask xsi:type="setup:VariableTask"
-			           name="eclipse.gerrit.remoteURIs"
-			           label="Eclipse Gerrit Repository">
-				<choice value="ssh://${git.user.id|username}@git.eclipse.org:29418/@{remoteURI}"
-				        label="SSH (read-write, Gerrit)">
-					<annotation source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-				</choice>
-				<choice value="https://${git.user.id|username}@git.eclipse.org/r/@{remoteURI}"
-				        label="HTTPS (read-write, Gerrit)">
-					<annotation source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-				</choice>
-				<choice value="https://git.eclipse.org/r/@{remoteURI}"
-				        label="HTTPS (read-only, anonymous, Gerrit)"/>
-				<description>Choose from the available remote Gerrit URIs</description>
-			</setupTask>
-			<setupTask xsi:type="setup:VariableTask"
-			           name="eclipse.git.remoteURIs"
-			           label="Eclipse Git Repository">
-				<choice value="ssh://${git.user.id|username}@git.eclipse.org/gitroot/@{remoteURI}.git"
-				        label="SSH (read-write, direct)">
-					<annotation source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-				</choice>
-				<choice value="http://git.eclipse.org/gitroot/@{remoteURI}.git"
-				        label="HTTP (read-only, anonymous, direct)"/>
-				<choice value="git://git.eclipse.org/gitroot/@{remoteURI}"
-				        label="Git (read-only, anonymous, direct)"/>
-				<description>Choose from the available Git URIs</description>
-			</setupTask>
-		</setupTask>
-		<setupTask xsi:type="setup:CompoundTask"
-		           filter="(eclipse.git.authentication.style=credentials)"
-		           name="Credentials Authentication">
-			<setupTask xsi:type="setup:VariableTask"
-			           name="eclipse.gerrit.remoteURIs"
-			           label="Eclipse Gerrit Repository">
-				<choice value="https://${git.user.id|username}@git.eclipse.org/r/@{remoteURI}"
-				        label="HTTPS (read-write, Gerrit)">
-					<annotation source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-				</choice>
-				<choice value="ssh://${git.user.id|username}@git.eclipse.org:29418/@{remoteURI}"
-				        label="SSH (read-write, Gerrit)">
-					<annotation source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-				</choice>
-				<choice value="https://git.eclipse.org/r/@{remoteURI}"
-				        label="HTTPS (read-only, anonymous, Gerrit)"/>
-				<description>Choose from the available remote Gerrit URIs</description>
-			</setupTask>
-			<setupTask xsi:type="setup:VariableTask"
-			           name="eclipse.git.remoteURIs"
-			           label="Eclipse Git Repository">
-				<choice value="http://git.eclipse.org/gitroot/@{remoteURI}.git"
-				        label="HTTP (read-only, anonymous, direct)"/>
-				<choice value="ssh://${git.user.id|username}@git.eclipse.org/gitroot/@{remoteURI}.git"
-				        label="SSH (read-write, direct)">
-					<annotation source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-				</choice>
-				<choice value="git://git.eclipse.org/gitroot/@{remoteURI}"
-				        label="Git (read-only, anonymous, direct)"/>
-				<description>Choose from the available Git URIs</description>
-			</setupTask>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="eclipse.git.gerrit.remoteURIs"
-		           label="Eclipse Gerrit or Git Repository">
-			<annotation source="http://www.eclipse.org/oomph/setup/InheritedChoices">
-				<detail key="inherit">
-					<value>eclipse.gerrit.remoteURIs eclipse.git.remoteURIs</value>
-				</detail>
-			</annotation>
-			<description>Choose from the available Gerrit or Git URIs</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="eclipse.latest.p2"
-		           value="http://download.eclipse.org/eclipse/updates/4.21-I-builds"
-		           label="Eclipse Latest I-Build p2 Repository - 4.21">
-			<description>The update site of the latest Eclipse project's builds, typically an I-Build for the next release</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="eclipse.latest.release.p2"
-		           value="http://download.eclipse.org/eclipse/updates/4.20/R-4.20-202106111600"
-		           label="Eclipse Latest Release p2 Repository - 4.20">
-			<description>The update site of the latest released Eclipse project's builds, always an R-Build for the most recent release</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="eclipse.target.platform"
-		           defaultValue="None"
-		           storageURI="scope://Workspace"
-		           label="Target Platform">
-			<annotation source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-			<choice value="2021-06"
-			        label="Eclipse 2021-06 - 4.20"/>
-			<choice value="None"
-			        label="None"/>
-			<description>Choose the compatibility level of the target platform</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="eclipse.target.platform.latest"
-		           value="2021-09"
-		           storageURI="scope://Workspace"
-		           label="Target Platform Latest">
-			<annotation source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-			<description>The latest available compatibility level of the target platform. It may be the released stream but more likely the stream working toward the next release of the platform. This may be used to initialize the value of the eclipse.target.platform variable.</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="eclipse.target.platform.latest.released"
-		           value="2021-06"
-		           storageURI="scope://Workspace"
-		           label="Target Platform Latest Released">
-			<annotation source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-			<description>The latest available released compatibility level of the target platform. It will be updated to reference the most recently released stream of the platform. This may be used to initialize the value of the eclipse.target.platform variable.</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="eclipse.api.baseline.target.platform"
-		           value="None"
-		           storageURI="scope://Workspace"
-		           label="API Baseline Target Platform">
-			<annotation source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-			<choice value="2021-06"
-			        label="Eclipse 2021-06 - 4.20"/>
-			<choice value="None"
-			        label="None"/>
-			<description>Choose the compatibility level of the target platform for the modular API baseline</description>
-		</setupTask>
-		<setupTask xsi:type="setup:VariableTask"
-		           name="eclipse.api.baseline.target.platform.latest.released"
-		           value="2021-06"
-		           storageURI="scope://Workspace"
-		           label="Target Platform Latest Released">
-			<annotation source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-			<description>The compatibility level of the target platform for the modular API baseline for the most recent released version of the platform.  It will be updated to reference the most recently released stream of the platform. This may be used to initialize the value of the eclipse.api.baseline.target.platform variable.</description>
-		</setupTask>
-		<setupTask xsi:type="setup:CompoundTask"
-		           name="Github">
-			<setupTask xsi:type="setup:VariableTask"
-			           name="github.user.id"
-			           label="Github user ID">
-				<description>The Github user ID</description>
-			</setupTask>
-			<setupTask xsi:type="setup:VariableTask"
-			           name="github.author.name"
-			           label="Github author name"/>
-			<setupTask xsi:type="setup:VariableTask"
-			           name="github.author.email"
-			           label="Github author email"/>
-			<setupTask xsi:type="setup:VariableTask"
-			           name="github.remoteURIs"
-			           label="Github repository">
-				<choice value="git@github.com:@{remoteURI}.git"
-				        label="Git (read-write)"/>
-				<choice value="https://${github.user.id|username}@github.com/@{remoteURI}.git"
-				        label="HTTPS (read-write)">
-					<annotation source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
-				</choice>
-				<choice value="https://github.com/@{remoteURI}.git"
-				        label="HTTPS (read-only, anonymous)"/>
-				<description>Choose from the available Github URIs</description>
-			</setupTask>
-		</setupTask>
-	</setupTask>
-	<setupTask xsi:type="setup:WorkspaceTask"
-	           id="workspace"/>
-	<setupTask xsi:type="setup:ResourceCreationTask"
-	           targetURL="configuration:/.settings/org.eclipse.ui.ide.prefs">
-		<content>
-			MAX_RECENT_WORKSPACES=5
-			RECENT_WORKSPACES=${workspace.location|property}
-			RECENT_WORKSPACES_PROTOCOL=3
-			SHOW_RECENT_WORKSPACES=false
-			SHOW_WORKSPACE_SELECTION_DIALOG=true
-			eclipse.preferences.version=1
-		</content>
-	</setupTask>
-	<setupTask xsi:type="setup:TextModifyTask"
-	           url="configuration:/config.ini">
-		<modification pattern="osgi\.instance\.area\.default=(@user\.home/workspace)">
-			<substitution>${workspace.location|path}</substitution>
-		</modification>
-	</setupTask>
-	<setupTask xsi:type="setup.targlets:TargletTask">
-		<targlet name="Eclipse Platform"
-		         activeRepositoryList="${eclipse.target.platform}">
-			<repositoryList name="None"/>
-			<repositoryList name="2021-06">
-				<repository url="http://download.eclipse.org/eclipse/updates/4.20/R-4.20-202106111600"/>
-			</repositoryList>
-		</targlet>
-	</setupTask>
-	<setupTask xsi:type="setup.targlets:TargletTask"
-	           id="api.baseline.targlet"
-	           targetName="Modular API Baseline Target"
-	           activateTarget="false">
-		<targlet name="Eclipse Platform"
-		         activeRepositoryList="${eclipse.api.baseline.target.platform}"
-		         includeSources="false">
-			<repositoryList name="None"/>
-			<repositoryList name="2021-06">
-				<repository url="http://download.eclipse.org/eclipse/updates/4.20/R-4.20-202106111600"/>
-			</repositoryList>
-		</targlet>
-	</setupTask>
-	<project href="com.capgemini.project.ct.setup#/"/>
-	<description>All the projects at Capgemini</description>
+<setup:ProjectCatalog
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore"
+    name="com.capgemini"
+    label="Capgemini Projects">
+  <annotation
+      source="http://www.eclipse.org/oomph/setup/BrandingInfo">
+    <detail
+        key="imageURI">
+      <value>platform:/plugin/org.eclipse.oomph.setup.ui/icons/committers.png</value>
+    </detail>
+    <detail
+        key="siteURI">
+      <value>https://projects.eclipse.org/</value>
+    </detail>
+  </annotation>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="Global Variables">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="git.user.id"
+        defaultValue="anonymous"
+        label="Eclipse Git/Gerrit user ID">
+      <description>The user ID of the Eclipse Git/Gerrit account, i.e., the 'Username' of your profile at https://git.eclipse.org/r/settings but not the numeric ID, the Email, nor the Full name of your profile</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="git.author.name"
+        label="Eclipse author name for Git/Gerrit">
+      <description>The author name used for Git/Gerrit commits</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="git.author.email"
+        label="Eclipse author email for Git/Gerrit">
+      <description>The email address associated with Git/Gerrit commits</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="bugzilla.id"
+        defaultValue="anonymous"
+        label="Eclipse user email for Bugzilla/Jenkins/Jiro">
+      <description>The email associated with the Eclipse Bugzilla/Jenkins/Jiro account</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="PASSWORD"
+        name="eclipse.user.password"
+        label="Eclipse password for Bugzilla/Jenkins/Jiro">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/PasswordVerification">
+        <detail
+            key="type">
+          <value>form</value>
+        </detail>
+        <detail
+            key="form.url">
+          <value>https://accounts.eclipse.org/</value>
+        </detail>
+        <detail
+            key="form.parameters">
+          <value>name pass op form_id</value>
+        </detail>
+        <detail
+            key="form.secure.parameters">
+          <value>pass</value>
+        </detail>
+        <detail
+            key="form.filter">
+          <value>name=anonymous\&amp;.*</value>
+        </detail>
+        <detail
+            key="form.parameter.name">
+          <value>$${bugzilla.id}</value>
+        </detail>
+        <detail
+            key="form.parameter.pass">
+          <value>$${value}</value>
+        </detail>
+        <detail
+            key="form.parameter.op">
+          <value>Sign in</value>
+        </detail>
+        <detail
+            key="form.parameter.form_id">
+          <value>user_login</value>
+        </detail>
+        <detail
+            key="form.verification.matches">
+          <value>&lt;https://www.eclipse.org/user/.*>; rel=&quot;canonical&quot;.*</value>
+        </detail>
+        <detail
+            key="form.ok">
+          <value>Valid password for $${form.parameter.name} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.info">
+          <value>Validate the password for $${form.parameter.name} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.warning">
+          <value>Unable to validate the password for $${form.parameter.name} because $${form.url} is unreachable.</value>
+        </detail>
+        <detail
+            key="form.error">
+          <value>Invalid password for $${form.parameter.name} at $${form.url}.</value>
+        </detail>
+      </annotation>
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/PasswordVerification">
+        <detail
+            key="type">
+          <value>form</value>
+        </detail>
+        <detail
+            key="form.url">
+          <value>https://git.eclipse.org/r/login/</value>
+        </detail>
+        <detail
+            key="form.parameters">
+          <value>username password submit</value>
+        </detail>
+        <detail
+            key="form.secure.parameters">
+          <value>password</value>
+        </detail>
+        <detail
+            key="form.filter">
+          <value>username=anonymous\&amp;.*</value>
+        </detail>
+        <detail
+            key="form.parameter.username">
+          <value>$${bugzilla.id}</value>
+        </detail>
+        <detail
+            key="form.parameter.password">
+          <value>$${value}</value>
+        </detail>
+        <detail
+            key="form.parameter.submit">
+          <value>Sign In</value>
+        </detail>
+        <detail
+            key="form.verification.url">
+          <value>https://git.eclipse.org/r/accounts/$${git.user.id|username}</value>
+        </detail>
+        <detail
+            key="form.verification.matches">
+          <value>.*&quot;email&quot;: &quot;$${form.parameter.username}&quot;.*</value>
+        </detail>
+        <detail
+            key="form.ok">
+          <value>Valid password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.info">
+          <value>Validate the password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.warning">
+          <value>Unable to validate the password for account $${git.user.id} of $${form.parameter.username} because $${form.url} is unreachable.</value>
+        </detail>
+        <detail
+            key="form.error">
+          <value>Invalid password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
+        </detail>
+      </annotation>
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/PasswordVerification">
+        <detail
+            key="type">
+          <value>form-post</value>
+        </detail>
+        <detail
+            key="form.url">
+          <value>https://accounts.eclipse.org/</value>
+        </detail>
+        <detail
+            key="form.filter">
+          <value>anonymous</value>
+        </detail>
+        <detail
+            key="form.user">
+          <value>$${bugzilla.id}</value>
+        </detail>
+        <detail
+            key="form.password">
+          <value>$${value}</value>
+        </detail>
+        <detail
+            key="form.response.location.matches">
+          <value>https://accounts.eclipse.org/users/$${git.user.id}</value>
+        </detail>
+        <detail
+            key="form.ok">
+          <value>Valid password for account $${git.user.id} of $${form.user} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.info">
+          <value>Validate the password for account $${git.user.id} of $${form.user} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.warning">
+          <value>Unable to validate the password for account $${git.user.id} of $${form.user} because $${form.url} is unreachable.</value>
+        </detail>
+        <detail
+            key="form.error">
+          <value>Invalid password for account $${git.user.id} of $${form.user} at $${form.url}.</value>
+        </detail>
+      </annotation>
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/PasswordVerification">
+        <detail
+            key="type">
+          <value>form-post</value>
+        </detail>
+        <detail
+            key="form.url">
+          <value>https://accounts.eclipse.org/</value>
+        </detail>
+        <detail
+            key="form.filter">
+          <value>anonymous</value>
+        </detail>
+        <detail
+            key="form.user">
+          <value>$${bugzilla.id}</value>
+        </detail>
+        <detail
+            key="form.password">
+          <value>$${value}</value>
+        </detail>
+        <detail
+            key="form.response.location.matches">
+          <value>https://accounts.eclipse.org/users/.*</value>
+        </detail>
+        <detail
+            key="form.ok">
+          <value>Valid password for $${form.user} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.info">
+          <value>Validate the password for $${form.user} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.warning">
+          <value>Unable to validate the password for $${form.user} because $${form.url} is unreachable.</value>
+        </detail>
+        <detail
+            key="form.error">
+          <value>Invalid password for $${form.user} at $${form.url}.</value>
+        </detail>
+      </annotation>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.gerrit.uri.pattern"
+        value="(https|ssh)://([^@/]+@)?(git.eclipse.org:29418/.*|git.eclipse.org/r/.*)"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.git.authentication.style"
+        value="anonymous"
+        label="Eclipse Git Authentication Style">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+      <choice
+          value="anonymous"
+          label="Anonymous Authentication"/>
+      <choice
+          value="ssh"
+          label="SSH Authentication"/>
+      <choice
+          value="credentials"
+          label="Credentials Authentication"/>
+      <description>Choose the style of authentication used to access Eclipse Git clones</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        filter="(&amp;(!(eclipse.git.authentication.style=ssh))(!(eclipse.git.authentication.style=credentials)))"
+        name="Anonymous Git Authentication">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.gerrit.remoteURIs"
+          label="Eclipse Gerrit Repository">
+        <choice
+            value="https://git.eclipse.org/r/@{remoteURI}"
+            label="HTTPS (read-only, anonymous, Gerrit)"/>
+        <choice
+            value="ssh://${git.user.id|username}@git.eclipse.org:29418/@{remoteURI}"
+            label="SSH (read-write, Gerrit)">
+          <annotation
+              source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+        </choice>
+        <choice
+            value="https://${git.user.id|username}@git.eclipse.org/r/@{remoteURI}"
+            label="HTTPS (read-write, Gerrit)">
+          <annotation
+              source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+        </choice>
+        <description>Choose from the available remote Gerrit URIs</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.git.remoteURIs"
+          label="Eclipse Git Repository">
+        <choice
+            value="http://git.eclipse.org/gitroot/@{remoteURI}.git"
+            label="HTTP (read-only, anonymous, direct)"/>
+        <choice
+            value="ssh://${git.user.id|username}@git.eclipse.org/gitroot/@{remoteURI}.git"
+            label="SSH (read-write, direct)">
+          <annotation
+              source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+        </choice>
+        <choice
+            value="git://git.eclipse.org/gitroot/@{remoteURI}"
+            label="Git (read-only, anonymous, direct)"/>
+        <description>Choose from the available Git URIs</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        filter="(eclipse.git.authentication.style=ssh)"
+        name="SSH Authentication">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.gerrit.remoteURIs"
+          label="Eclipse Gerrit Repository">
+        <choice
+            value="ssh://${git.user.id|username}@git.eclipse.org:29418/@{remoteURI}"
+            label="SSH (read-write, Gerrit)">
+          <annotation
+              source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+        </choice>
+        <choice
+            value="https://${git.user.id|username}@git.eclipse.org/r/@{remoteURI}"
+            label="HTTPS (read-write, Gerrit)">
+          <annotation
+              source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+        </choice>
+        <choice
+            value="https://git.eclipse.org/r/@{remoteURI}"
+            label="HTTPS (read-only, anonymous, Gerrit)"/>
+        <description>Choose from the available remote Gerrit URIs</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.git.remoteURIs"
+          label="Eclipse Git Repository">
+        <choice
+            value="ssh://${git.user.id|username}@git.eclipse.org/gitroot/@{remoteURI}.git"
+            label="SSH (read-write, direct)">
+          <annotation
+              source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+        </choice>
+        <choice
+            value="http://git.eclipse.org/gitroot/@{remoteURI}.git"
+            label="HTTP (read-only, anonymous, direct)"/>
+        <choice
+            value="git://git.eclipse.org/gitroot/@{remoteURI}"
+            label="Git (read-only, anonymous, direct)"/>
+        <description>Choose from the available Git URIs</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        filter="(eclipse.git.authentication.style=credentials)"
+        name="Credentials Authentication">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.gerrit.remoteURIs"
+          label="Eclipse Gerrit Repository">
+        <choice
+            value="https://${git.user.id|username}@git.eclipse.org/r/@{remoteURI}"
+            label="HTTPS (read-write, Gerrit)">
+          <annotation
+              source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+        </choice>
+        <choice
+            value="ssh://${git.user.id|username}@git.eclipse.org:29418/@{remoteURI}"
+            label="SSH (read-write, Gerrit)">
+          <annotation
+              source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+        </choice>
+        <choice
+            value="https://git.eclipse.org/r/@{remoteURI}"
+            label="HTTPS (read-only, anonymous, Gerrit)"/>
+        <description>Choose from the available remote Gerrit URIs</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.git.remoteURIs"
+          label="Eclipse Git Repository">
+        <choice
+            value="http://git.eclipse.org/gitroot/@{remoteURI}.git"
+            label="HTTP (read-only, anonymous, direct)"/>
+        <choice
+            value="ssh://${git.user.id|username}@git.eclipse.org/gitroot/@{remoteURI}.git"
+            label="SSH (read-write, direct)">
+          <annotation
+              source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+        </choice>
+        <choice
+            value="git://git.eclipse.org/gitroot/@{remoteURI}"
+            label="Git (read-only, anonymous, direct)"/>
+        <description>Choose from the available Git URIs</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.git.gerrit.remoteURIs"
+        label="Eclipse Gerrit or Git Repository">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/InheritedChoices">
+        <detail
+            key="inherit">
+          <value>eclipse.gerrit.remoteURIs eclipse.git.remoteURIs</value>
+        </detail>
+      </annotation>
+      <description>Choose from the available Gerrit or Git URIs</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.latest.p2"
+        value="http://download.eclipse.org/eclipse/updates/4.21-I-builds"
+        label="Eclipse Latest I-Build p2 Repository - 4.21">
+      <description>The update site of the latest Eclipse project's builds, typically an I-Build for the next release</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.latest.release.p2"
+        value="http://download.eclipse.org/eclipse/updates/4.20/R-4.20-202106111600"
+        label="Eclipse Latest Release p2 Repository - 4.20">
+      <description>The update site of the latest released Eclipse project's builds, always an R-Build for the most recent release</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.target.platform"
+        defaultValue="None"
+        storageURI="scope://Workspace"
+        label="Target Platform">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+      <choice
+          value="2021-06"
+          label="Eclipse 2021-06 - 4.20"/>
+      <choice
+          value="None"
+          label="None"/>
+      <description>Choose the compatibility level of the target platform</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.target.platform.latest"
+        value="2021-09"
+        storageURI="scope://Workspace"
+        label="Target Platform Latest">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+      <description>The latest available compatibility level of the target platform. It may be the released stream but more likely the stream working toward the next release of the platform. This may be used to initialize the value of the eclipse.target.platform variable.</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.target.platform.latest.released"
+        value="2021-06"
+        storageURI="scope://Workspace"
+        label="Target Platform Latest Released">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+      <description>The latest available released compatibility level of the target platform. It will be updated to reference the most recently released stream of the platform. This may be used to initialize the value of the eclipse.target.platform variable.</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.api.baseline.target.platform"
+        value="None"
+        storageURI="scope://Workspace"
+        label="API Baseline Target Platform">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+      <choice
+          value="2021-06"
+          label="Eclipse 2021-06 - 4.20"/>
+      <choice
+          value="None"
+          label="None"/>
+      <description>Choose the compatibility level of the target platform for the modular API baseline</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.api.baseline.target.platform.latest.released"
+        value="2021-06"
+        storageURI="scope://Workspace"
+        label="Target Platform Latest Released">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+      <description>The compatibility level of the target platform for the modular API baseline for the most recent released version of the platform.  It will be updated to reference the most recently released stream of the platform. This may be used to initialize the value of the eclipse.api.baseline.target.platform variable.</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="Github">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.user.id"
+          label="Github user ID">
+        <description>The Github user ID</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.author.name"
+          label="Github author name"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.author.email"
+          label="Github author email"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.remoteURIs"
+          label="Github repository">
+        <choice
+            value="git@github.com:@{remoteURI}.git"
+            label="Git (read-write)"/>
+        <choice
+            value="https://${github.user.id|username}@github.com/@{remoteURI}.git"
+            label="HTTPS (read-write)">
+          <annotation
+              source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+        </choice>
+        <choice
+            value="https://github.com/@{remoteURI}.git"
+            label="HTTPS (read-only, anonymous)"/>
+        <description>Choose from the available Github URIs</description>
+      </setupTask>
+    </setupTask>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:InstallationTask"/>
+  <setupTask
+      xsi:type="setup:WorkspaceTask"
+      id="workspace"
+      location="${install.root/workspace-}${installation.id}"/>
+  <setupTask
+      xsi:type="setup:ResourceCreationTask"
+      targetURL="configuration:/.settings/org.eclipse.ui.ide.prefs">
+    <content>
+      MAX_RECENT_WORKSPACES=5
+      RECENT_WORKSPACES=${workspace.location|property}
+      RECENT_WORKSPACES_PROTOCOL=3
+      SHOW_RECENT_WORKSPACES=false
+      SHOW_WORKSPACE_SELECTION_DIALOG=true
+      eclipse.preferences.version=1
+    </content>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:TextModifyTask"
+      url="configuration:/config.ini">
+    <modification
+        pattern="osgi\.instance\.area\.default=(@user\.home/workspace)">
+      <substitution>${workspace.location|path}</substitution>
+    </modification>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.targlets:TargletTask">
+    <targlet
+        name="Eclipse Platform"
+        activeRepositoryList="${eclipse.target.platform}">
+      <repositoryList
+          name="None"/>
+      <repositoryList
+          name="2021-06">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.20/R-4.20-202106111600"/>
+      </repositoryList>
+    </targlet>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.targlets:TargletTask"
+      id="api.baseline.targlet"
+      targetName="Modular API Baseline Target"
+      activateTarget="false">
+    <targlet
+        name="Eclipse Platform"
+        activeRepositoryList="${eclipse.api.baseline.target.platform}"
+        includeSources="false">
+      <repositoryList
+          name="None"/>
+      <repositoryList
+          name="2021-06">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.20/R-4.20-202106111600"/>
+      </repositoryList>
+    </targlet>
+  </setupTask>
+  <project href="com.capgemini.project.ct.setup#/"/>
+  <description>All the projects at Capgemini</description>
 </setup:ProjectCatalog>
