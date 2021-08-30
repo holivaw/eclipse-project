@@ -167,7 +167,8 @@
         value="C:\sources"/>
     <setupTask
         xsi:type="setup:VariableTask"
-        name="git.clone.chesstournament.all.location"/>
+        name="git.clone.chesstournament.all.location"
+        value="${git.container?root/}${installation.id}"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
