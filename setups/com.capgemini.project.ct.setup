@@ -11,7 +11,7 @@
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 index:/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 index:/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 index:/models/SetupWorkingSets.ecore"
     name="chess-tournament"
     label="Chess Tournament">
   <setupTask
@@ -320,6 +320,21 @@
       location="${git.container.root}"
       remoteURI="https://github.com/h_olivaw/chess-tournament-all.git"
       pushURI="">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/InducedChoices">
+      <detail
+          key="inherit">
+        <value>eclipse.git.remoteURIs</value>
+      </detail>
+      <detail
+          key="label">
+        <value>${scope.project.label} Git repository</value>
+      </detail>
+      <detail
+          key="target">
+        <value>remoteURI</value>
+      </detail>
+    </annotation>
     <description>Chess Tournament</description>
   </setupTask>
   <setupTask
@@ -327,6 +342,21 @@
       id="git.clone.chesstournament.serverboot"
       location="${git.container.root}"
       remoteURI="https://github.com/h_olivaw/chess-tournament-server-boot.git">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/InducedChoices">
+      <detail
+          key="inherit">
+        <value>eclipse.git.remoteURIs</value>
+      </detail>
+      <detail
+          key="label">
+        <value>${scope.project.label} Git repository</value>
+      </detail>
+      <detail
+          key="target">
+        <value>remoteURI</value>
+      </detail>
+    </annotation>
     <description>Chess Tournament</description>
   </setupTask>
   <setupTask
@@ -338,18 +368,13 @@
   <stream name="master"
       label="master">
     <setupTask
-        xsi:type="jdt:JRETask"
-        version="JavaSE-11"
-        location="${jre.location-11}"
-        name="JRE for JavaSE-11"/>
+        xsi:type="setup:EclipseIniTask"
+        option="-Doomph.redirection.eclipse.project"
+        value="=https://git.eclipse.org/c/holivaw/eclipse-project.git/plain//EclipseProject.setup->${git.clone.eclipse.project.location|uri}//EclipseProject.setup"
+        vm="true">
+      <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
+    </setupTask>
   </stream>
-  <setupTask
-      xsi:type="setup:EclipseIniTask"
-      option="-Doomph.redirection.eclipse.project"
-      value="=https://git.eclipse.org/c/holivaw/eclipse-project.git/plain//EclipseProject.setup->${git.clone.eclipse.project.location|uri}//EclipseProject.setup"
-      vm="true">
-    <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
-  </setupTask>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='com.capgemini']"/>

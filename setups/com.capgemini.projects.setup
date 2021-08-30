@@ -542,6 +542,11 @@
         name="git.container.root"
         value="C:\sources"
         label="Git sources"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="workspace.location"
+        value="C:\products\wokspaces\${application.id}"
+        label="Workspace location"/>
   </setupTask>
   <setupTask
       xsi:type="setup:InstallationTask"/>
