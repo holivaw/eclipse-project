@@ -57,11 +57,6 @@
             label="HTTPS (read-only, anonymous)"/>
         <description>Choose from the available Github URIs</description>
       </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id="github.token"
-          name="github.token"
-          label="Github token"/>
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
