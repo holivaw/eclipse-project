@@ -39,7 +39,7 @@
     <setupTask
         xsi:type="setup:VariableTask"
         name="eclipse.target.platform"
-        defaultValue="None"
+        defaultValue="2021-06"
         storageURI="scope://Workspace"
         label="Target Platform">
       <annotation
@@ -103,28 +103,43 @@
         type="FOLDER"
         name="git.container.root"
         value="C:\sources"
-        label="Git sources"/>
+        label="Git sources">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="workspace.location"
         value="${workspace.container.root/}\${application.id}"
-        label="Workspace location"/>
+        label="Workspace location">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="workspace.container.root"
-        value="${installation.location/workspaces}"/>
+        value="${installation.location/workspaces}">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="install.root"
-        value="C:\products\ide"/>
+        value="C:\products\ide">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="eclipse.p2.data.area"
-        value="${install.root/.p2}"/>
+        value="${install.root/.p2}">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"

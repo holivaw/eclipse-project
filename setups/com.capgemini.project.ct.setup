@@ -24,22 +24,6 @@
     <setupTask
         xsi:type="setup:VariableTask"
         type="FOLDER"
-        name="workspace.location"
-        value="C:\products\workspaces\workspace-ct"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        type="URI"
-        name="git.checkout.branch"
-        value="${scope.project.stream.name}"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        type="FOLDER"
-        name="git.container.root"
-        value="C:\sources"
-        label="Git sources"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        type="FOLDER"
         name="git.clone.chesstournament.location"
         value="${git.container.root/chess-tournament}"
         label="Project source location">
@@ -50,16 +34,6 @@
         type="FOLDER"
         name="installation.location"
         value="C:\products\ide"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        type="FOLDER"
-        name="eclipse.p2.data.area"
-        value="${installation.location/.p2}"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="eclipse.target.platform"
-        defaultValue="2021-06"
-        storageURI="scope://Workspace"/>
     <setupTask
         xsi:type="setup:CompoundTask"
         name="Github">
@@ -167,7 +141,7 @@
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
       <detail
           key="inherit">
-        <value>eclipse.git.remoteURIs</value>
+        <value>github.remoteURIs</value>
       </detail>
       <detail
           key="label">
