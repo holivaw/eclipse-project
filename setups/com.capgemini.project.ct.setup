@@ -33,7 +33,7 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="installation.location"
-        value="C:\products\ide"/>
+        value="${install.root/chess-tournament}"/>
     <setupTask
         xsi:type="setup:CompoundTask"
         name="Github">
