@@ -10,13 +10,14 @@
   <annotation
       source="http://www.eclipse.org/oomph/setup/BrandingInfo"/>
   <setupTask
+      xsi:type="setup:InstallationTask"
+      id="installation"
+      location="C:\products\ide"/>
+  <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Doomph.setup"
       value="=true"
       vm="true"/>
-  <setupTask
-      xsi:type="setup:InstallationTask"
-      id="installation"/>
   <setupTask
       xsi:type="setup.p2:P2Task">
     <requirement
@@ -24,7 +25,7 @@
     <repository
         url="${oomph.update.url}"/>
   </setupTask>
-  <product name="epp.package.capgemini"
+  <product name="epp.package.jee"
       label="Eclipse IDE for Capgemini Developers">
     <annotation
         source="http://www.eclipse.org/oomph/setup/BrandingInfo">
@@ -626,9 +627,6 @@
             name="org.eclipse.jst.ws.jaxws.feature.feature.group"
             versionRange="[1.2.0,2.0.0)"/>
         <requirement
-            name="org.eclipse.launchbar.feature.group"
-            versionRange="[10.3.0,11.0.0)"/>
-        <requirement
             name="org.eclipse.linuxtools.changelog.feature.group"
             versionRange="[8.3.0,9.0.0)"/>
         <requirement
@@ -753,6 +751,12 @@
         <requirement
             name="org.eclipse.mylyn.versions.feature.group"
             versionRange="[1.17.0,2.0.0)"/>
+        <requirement
+            name="org.eclipse.mylyn.wikitext.editors_feature.feature.group"
+            versionRange="[3.0.0,4.0.0)"/>
+        <requirement
+            name="org.eclipse.mylyn.wikitext_feature.feature.group"
+            versionRange="[3.0.0,4.0.0)"/>
         <requirement
             name="org.eclipse.ocl.build.feature.group"
             versionRange="[6.15.0,7.0.0)"/>
@@ -1256,7 +1260,7 @@
             url="https://sevntu-checkstyle.github.io/sevntu.checkstyle/update-site"/>
       </setupTask>
     </version>
-    <description>Tools for developers working with Java and Web applications, including a Java IDE, tools for JavaScript, TypeScript, JavaServer Pages and Faces, Yaml, Markdown, Web Services, JPA and Data Tools, Maven and Gradle, Git, and more.</description>
+    <description>Tools for developers working with Java</description>
   </product>
-  <description>The catalog of products available as &lt;a href='https://www.eclipse.org/downloads/'>packaged downloads&lt;/a> at Eclipse.org.</description>
+  <description>The catalog of products at Capgemini</description>
 </setup:ProductCatalog>

@@ -8,10 +8,8 @@
     xmlns:maven="http://www.eclipse.org/oomph/setup/maven/1.0"
     xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
-    xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 index:/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 index:/models/SetupWorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 index:/models/SetupWorkingSets.ecore"
     name="chess-tournament"
     label="Chess Tournament">
   <setupTask
@@ -24,152 +22,33 @@
       xsi:type="setup:CompoundTask"
       name="Global variables">
     <setupTask
-        xsi:type="setup:CompoundTask"
-        name="Git">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="git.user.id"
-          defaultValue="anonymous"
-          label="Eclipse Git/Gerrit user ID">
-        <description>The user ID of the Eclipse Git/Gerrit account</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="git.author.name"
-          label="Eclipse author name for Git/Gerrit">
-        <description>The author name used for Git/Gerrit commits</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="git.author.email"
-          label="Eclipse author email for Git/Gerrit">
-        <description>The email address associated with Git/Gerrit commits</description>
-      </setupTask>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        name="Github">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="github.user.id"
-          label="Github user ID">
-        <description>The Github user ID</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="github.author.name"
-          label="Github author name"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="github.author.email"
-          label="Github author email"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="github.remoteURIs"
-          label="Github repository">
-        <choice
-            value="git@github.com:@{remoteURI}.git"
-            label="Git (read-write)"/>
-        <choice
-            value="https://${github.user.id}@github.com/@{remoteURI}.git"
-            label="HTTPS (read-write)"/>
-        <choice
-            value="http://github.com/@{remoteURI}.git"
-            label="HTTP (read-only, anonymous)"/>
-        <description>Choose from the available Github URIs</description>
-      </setupTask>
-    </setupTask>
-    <setupTask
         xsi:type="setup:VariableTask"
-        name="eclipse.latest.p2"
-        value="http://download.eclipse.org/eclipse/updates/4.20-I-builds"
-        label="Eclipse Latest I-Build p2 Repository - 4.20">
-      <description>The update site of the latest Eclipse project's builds, typically an I-Build for the next release</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="eclipse.latest.release.p2"
-        value="http://download.eclipse.org/eclipse/updates/4.20/R-4.20-202106111600"
-        label="Eclipse Latest Release p2 Repository - 4.20">
-      <description>The update site of the latest released Eclipse project's builds, always an R-Build for the most recent release</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="eclipse.target.platform"
-        defaultValue="2021-06"
-        storageURI="scope://Workspace"
-        label="Target Platform">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-      <choice
-          value="2021-06"
-          label="Eclipse 2021-06 - 4.20"/>
-      <choice
-          value="None"
-          label="None"/>
-      <description>Choose the compatibility level of the target platform</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="eclipse.target.platform.latest"
-        value="2021-06"
-        storageURI="scope://Workspace"
-        label="Target Platform Latest">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-      <description>The latest available compatibility level of the target platform. It may be the released stream but more likely the stream working toward the next release of the platform. This may be used to initialize the value of the eclipse.target.platform variable.</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="eclipse.target.platform.latest.released"
-        value="2021-06"
-        storageURI="scope://Workspace"
-        label="Target Platform Latest Released">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-      <description>The latest available released compatibility level of the target platform. It will be updated to reference the most recently released stream of the platform. This may be used to initialize the value of the eclipse.target.platform variable.</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="eclipse.api.baseline.target.platform"
-        value="None"
-        storageURI="scope://Workspace"
-        label="API Baseline Target Platform">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-      <choice
-          value="2021-06"
-          label="Eclipse 2021-06 - 4.20"/>
-      <choice
-          value="None"
-          label="None"/>
-      <description>Choose the compatibility level of the target platform for the modular API baseline</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="eclipse.api.baseline.target.platform.latest.released"
-        value="2021-06"
-        storageURI="scope://Workspace"
-        label="Target Platform Latest Released">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-      <description>The compatibility level of the target platform for the modular API baseline for the most recent released version of the platform.  It will be updated to reference the most recently released stream of the platform. This may be used to initialize the value of the eclipse.api.baseline.target.platform variable.</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
+        type="FOLDER"
         name="workspace.location"
         value="C:\products\workspaces\workspace-ct"/>
     <setupTask
         xsi:type="setup:VariableTask"
+        type="URI"
         name="git.checkout.branch"
         value="${scope.project.stream.name}"/>
     <setupTask
         xsi:type="setup:VariableTask"
+        type="FOLDER"
         name="git.clone.chesstournament.location"
         value="${git.container.root/}${installation.id}"
         label="Project source location">
       <description>Project source location</description>
     </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="installation.location"
+        value="C:\products\ide"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="eclipse.p2.data.area"
+        value="C:\products\ide\.p2"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -218,44 +97,6 @@
           key="/instance/org.eclipse.pde.api.tools/missing_default_api_profile"
           value="Ignore"/>
     </setupTask>
-  </setupTask>
-  <setupTask
-      xsi:type="setup.p2:P2Task"
-      label="Code Quality Tools">
-    <requirement
-        name="com.github.spotbugs.plugin.eclipse.feature.group"
-        versionRange="[4.4.0,5.0.0)"/>
-    <requirement
-        name="net.sf.eclipsecs.feature.group"
-        versionRange="[8.44.0,9.0.0)"/>
-    <requirement
-        name="net.sourceforge.pmd.eclipse.feature.group"
-        versionRange="[4.27.0,5.0.0)"/>
-    <requirement
-        name="org.eclipse.eclemma.feature.feature.group"
-        versionRange="[3.1.0,4.0.0)"/>
-    <repository
-        url="http://update.eclemma.org"/>
-    <repository
-        url="https://checkstyle.org/eclipse-cs-update-site"/>
-    <repository
-        url="https://spotbugs.github.io/eclipse"/>
-    <repository
-        url="https://pmd.github.io/pmd-eclipse-plugin-p2-site"/>
-  </setupTask>
-  <setupTask
-      xsi:type="setup.targlets:TargletTask">
-    <targlet
-        name="Eclipse Platform"
-        activeRepositoryList="${eclipse.target.platform}">
-      <repositoryList
-          name="None"/>
-      <repositoryList
-          name="2021-06">
-        <repository
-            url="http://download.eclipse.org/eclipse/updates/4.20/R-4.20-202106111600"/>
-      </repositoryList>
-    </targlet>
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
@@ -318,7 +159,7 @@
   <setupTask
       xsi:type="maven:MavenImportTask">
     <sourceLocator
-        rootFolder="${git.clone.chesstournament.all.location}"
+        rootFolder="${git.clone.chesstournament.location}"
         locateNestedProjects="true"/>
   </setupTask>
   <stream name="master"
@@ -326,13 +167,13 @@
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-Doomph.redirection.fr.chess-tournament-all"
-        value="=https://raw.githubusercontent.com/holivaw/chess-tournament-all//master/com.capgemini.ct.setup->${git.clone.chesstournament.all.location|uri}//com.capgemini.ct.setup"
+        value="=https://raw.githubusercontent.com/holivaw/chess-tournament-all//master/com.capgemini.ct.setup->${git.clone.chesstournament.location|uri}//com.capgemini.ct.setup"
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
     </setupTask>
   </stream>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
-      href="index:/org.eclipse.setup#//@projectCatalogs[name='com.capgemini']"/>
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
   <description>Workbench and workspace configuration for Chess Tournament</description>
 </setup:Project>
