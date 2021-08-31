@@ -6171,7 +6171,7 @@
     </modification>
     <modification
         pattern="eclipse\.p2\.data\.area=(file\:/C\:/Users/cgandeme/.p2/)">
-      <substitution>${seclipse.p2.data.area}</substitution>
+      <substitution>${eclipse.p2.data.area}</substitution>
     </modification>
   </setupTask>
   <setupTask
