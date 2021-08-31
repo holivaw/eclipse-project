@@ -35,7 +35,7 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="git.clone.chesstournament.location"
-        value="${git.container.root/}${installation.id}"
+        value="${git.container.root/chess-tournament}"
         label="Project source location">
       <description>Project source location</description>
     </setupTask>
@@ -48,7 +48,13 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="eclipse.p2.data.area"
-        value="C:\products\ide\.p2"/>
+        value="${installation.location/.p2}"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="git.container.root"
+        value="C:\sources"
+        label="Git sources"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"

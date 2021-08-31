@@ -563,7 +563,7 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="eclipse.p2.data.area"
-        value="C:\products\ide\.p2"/>
+        value="${install.root/.p2}"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
