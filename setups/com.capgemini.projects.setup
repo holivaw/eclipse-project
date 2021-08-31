@@ -75,7 +75,7 @@
     <setupTask
         xsi:type="setup:VariableTask"
         name="eclipse.api.baseline.target.platform"
-        value="None"
+        value="2021-06"
         storageURI="scope://Workspace"
         label="API Baseline Target Platform">
       <annotation
@@ -110,9 +110,9 @@
     <setupTask
         xsi:type="setup:VariableTask"
         type="FOLDER"
-        name="workspace.location"
-        value="${workspace.container.root/}\${application.id}"
-        label="Workspace location">
+        name="install.root"
+        value="C:\products\ide"
+        defaultValue="C:\products\ide">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
@@ -120,15 +120,16 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="workspace.container.root"
-        value="${installation.location/workspaces}">
+        value="${install.root/workspaces}">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
         type="FOLDER"
-        name="install.root"
-        value="C:\products\ide">
+        name="workspace.location"
+        value="${workspace.container.root/workspace-}${scope.project.label}"
+        label="Workspace location">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
