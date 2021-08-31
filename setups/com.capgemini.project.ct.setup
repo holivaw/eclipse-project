@@ -34,6 +34,12 @@
     <setupTask
         xsi:type="setup:VariableTask"
         type="FOLDER"
+        name="git.container.root"
+        value="C:\sources"
+        label="Git sources"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
         name="git.clone.chesstournament.location"
         value="${git.container.root/chess-tournament}"
         label="Project source location">
@@ -49,12 +55,6 @@
         type="FOLDER"
         name="eclipse.p2.data.area"
         value="${installation.location/.p2}"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        type="FOLDER"
-        name="git.container.root"
-        value="C:\sources"
-        label="Git sources"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -121,7 +121,7 @@
       xsi:type="git:GitCloneTask"
       id="git.clone.chesstournament.all"
       location="${git.clone.chesstournament.location}"
-      remoteURI="https://github.com/h_olivaw/chess-tournament-all.git"
+      remoteURI="https://github.com/holivaw/chess-tournament-all.git"
       pushURI="">
     <annotation
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
@@ -144,7 +144,7 @@
       xsi:type="git:GitCloneTask"
       id="git.clone.chesstournament.serverboot"
       location="${git.clone.chesstournament.location}"
-      remoteURI="https://github.com/h_olivaw/chess-tournament-server-boot.git">
+      remoteURI="https://github.com/holivaw/chess-tournament-server-boot.git">
     <annotation
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
       <detail
