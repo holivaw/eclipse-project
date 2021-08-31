@@ -128,7 +128,7 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="workspace.location"
-        value="${workspace.container.root/workspace-}${scope.project.label}"
+        value="${workspace.container.root/workspace-}${application.id}"
         label="Workspace location">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
