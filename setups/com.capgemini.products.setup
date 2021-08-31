@@ -97,7 +97,7 @@
             versionRange="[1.0.0,2.0.0)"/>
         <requirement
             name="com.github.sevntu.checkstyle.checks.feature.feature.group"
-            versionRange="[1.38.0,2.0.0)"/>
+            versionRange="[1.40.0,2.0.0)"/>
         <requirement
             name="com.github.spotbugs.plugin.eclipse.feature.group"
             versionRange="[4.4.0,5.0.0)"/>
@@ -664,12 +664,6 @@
             versionRange="[8.3.0,9.0.0)"
             filter="(osgi.os=linux)"/>
         <requirement
-            name="org.eclipse.mat.chart.feature.feature.group"
-            versionRange="[1.12.0,2.0.0)"/>
-        <requirement
-            name="org.eclipse.mat.feature.feature.group"
-            versionRange="[1.12.0,2.0.0)"/>
-        <requirement
             name="org.eclipse.m2e.feature.feature.group"
             versionRange="[1.18.0,2.0.0)"/>
         <requirement
@@ -690,6 +684,12 @@
         <requirement
             name="org.eclipse.m2e.wtp.jsf.feature.feature.group"
             versionRange="[1.4.0,2.0.0)"/>
+        <requirement
+            name="org.eclipse.mat.chart.feature.feature.group"
+            versionRange="[1.12.0,2.0.0)"/>
+        <requirement
+            name="org.eclipse.mat.feature.feature.group"
+            versionRange="[1.12.0,2.0.0)"/>
         <requirement
             name="org.eclipse.mylyn.builds.feature.group"
             versionRange="[1.17.0,2.0.0)"/>
@@ -1160,23 +1160,29 @@
             name="org.springframework.tooling.boot.ls.feature.feature.group"
             versionRange="[4.11.0,5.0.0)"/>
         <requirement
+            name="org.testng.eclipse.feature.group"
+            versionRange="[7.3.0,8.0.0)"/>
+        <requirement
+            name="org.testng.p2.feature.feature.group"
+            versionRange="[7.3.0,8.0.0)"/>
+        <requirement
             name="tern.eclipse.ide.server.nodejs.embed.feature.group"
-            versionRange="[1.1.0,2.0.0)"/>
+            versionRange="[1.3.0,2.0.0)"/>
         <requirement
             name="tern.eclipse.ide.tools.feature.feature.group"
-            versionRange="[1.1.0,2.0.0)"/>
+            versionRange="[1.3.0,2.0.0)"/>
         <requirement
             name="tern-feature.feature.group"
-            versionRange="[1.1.0,2.0.0)"/>
+            versionRange="[1.3.0,2.0.0)"/>
         <requirement
             name="tern-jsdt-feature.feature.group"
-            versionRange="[1.1.0,2.0.0)"/>
+            versionRange="[1.3.0,2.0.0)"/>
         <requirement
             name="tern-linters-feature.feature.group"
-            versionRange="[1.1.0,2.0.0)"/>
+            versionRange="[1.3.0,2.0.0)"/>
         <requirement
             name="tern-server-nodejs-feature.feature.group"
-            versionRange="[1.1.0,2.0.0)"/>
+            versionRange="[1.3.0,2.0.0)"/>
         <repository
             url="https://download.eclipse.org/technology/epp/packages/2021-06"/>
         <repository
@@ -1246,6 +1252,8 @@
             url="https://raw.githubusercontent.com/essiembre/eclipse-rbe/master/eclipse-rbe-update-site/site.xml"/>
         <repository
             url="https://raw.githubusercontent.com/iloveeclipse/plugins/latest"/>
+        <repository
+            url="https://sevntu-checkstyle.github.io/sevntu.checkstyle/update-site"/>
       </setupTask>
     </version>
     <description>Tools for developers working with Java and Web applications, including a Java IDE, tools for JavaScript, TypeScript, JavaServer Pages and Faces, Yaml, Markdown, Web Services, JPA and Data Tools, Maven and Gradle, Git, and more.</description>
