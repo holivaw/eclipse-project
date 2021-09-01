@@ -102,6 +102,41 @@
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
       <description>The compatibility level of the target platform for the modular API baseline for the most recent released version of the platform.  It will be updated to reference the most recently released stream of the platform. This may be used to initialize the value of the eclipse.api.baseline.target.platform variable.</description>
     </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="install.root"
+        value="C:\products\ide"
+        defaultValue="C:\products\ide"
+        label="Installation Root">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="eclipse.p2.data.area"
+        value="${install.root/.p2}">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="workspace.container.root"
+        value="$${install.root/workspaces}">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="git.container.root"
+        value="C:\sources"
+        label="Git sources">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
