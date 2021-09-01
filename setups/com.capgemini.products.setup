@@ -17,7 +17,8 @@
         type="FOLDER"
         name="install.root"
         value="C:\products\ide"
-        defaultValue="C:\products\ide">
+        defaultValue="C:\products\ide"
+        label="Installation Root">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
@@ -33,7 +34,7 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="workspace.container.root"
-        value="${install.root/workspaces}">
+        value="$${install.root/workspaces}">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
