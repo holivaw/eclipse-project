@@ -27,6 +27,8 @@
         name="eclipse.latest.p2"
         value="http://download.eclipse.org/eclipse/updates/4.20-I-builds"
         label="Eclipse Latest I-Build p2 Repository - 4.20">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
       <description>The update site of the latest Eclipse project's builds, typically an I-Build for the next release</description>
     </setupTask>
     <setupTask
@@ -34,6 +36,8 @@
         name="eclipse.latest.release.p2"
         value="http://download.eclipse.org/eclipse/updates/4.20/R-4.20-202106111600"
         label="Eclipse Latest Release p2 Repository - 4.20">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
       <description>The update site of the latest released Eclipse project's builds, always an R-Build for the most recent release</description>
     </setupTask>
     <setupTask

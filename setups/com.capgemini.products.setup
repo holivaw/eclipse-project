@@ -12,7 +12,7 @@
   <setupTask
       xsi:type="setup:InstallationTask"
       id="installation"
-      location="C:\products\ide"/>
+      location="${installation.location|canonical/}${application.id}"/>
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Doomph.setup"
