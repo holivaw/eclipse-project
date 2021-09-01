@@ -108,7 +108,7 @@
         name="install.root"
         value="C:\products\ide"
         defaultValue="C:\products\ide"
-        label="Installation Root">
+        label="Installation location">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
@@ -124,7 +124,8 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="workspace.container.root"
-        value="$${install.root/workspaces}">
+        value="${install.root/workspaces}"
+        label="Workspaces location">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
@@ -133,10 +134,15 @@
         type="FOLDER"
         name="git.container.root"
         value="C:\sources"
-        label="Git sources">
+        label="Git sources location">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="workspace.location"
+        value="${worspace.container.root/ws-}${scope.project.name}"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
