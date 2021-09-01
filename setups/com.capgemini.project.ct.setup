@@ -22,34 +22,6 @@
       xsi:type="setup:CompoundTask"
       name="Global variables">
     <setupTask
-        xsi:type="setup:VariableTask"
-        type="FOLDER"
-        name="workspace.location"
-        value="${workspace.container.root/workspace-}${installation.id}"
-        label="Workspace location">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        type="FOLDER"
-        name="git.clone.chesstournament.location"
-        value="${git.container.root/chess-tournament}"
-        label="Project source location">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-      <description>Project source location</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        type="FOLDER"
-        name="installation.location"
-        value="${install.root/chess-tournament}"
-        label="Installation location">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-    </setupTask>
-    <setupTask
         xsi:type="setup:CompoundTask"
         name="Github">
       <setupTask
@@ -197,6 +169,41 @@
             label="HTTPS (read-only, anonymous)"/>
         <description>Choose from the available Github URIs</description>
       </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="installation.id"
+        value="chess-tournament">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="workspace.location"
+        value="${workspace.container.root/workspace-}${installation.id}"
+        label="Workspace location">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="git.clone.chesstournament.location"
+        value="${git.container.root/chess-tournament}"
+        label="Project source location">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+      <description>Project source location</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="FOLDER"
+        name="installation.location"
+        value="${install.root/chess-tournament}"
+        label="Installation location">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
   </setupTask>
   <setupTask
