@@ -18,7 +18,7 @@
         name="install.root"
         value="C:\products\ide"
         defaultValue="C:\products\ide"
-        label="Installation Root">
+        label="Installation location">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
@@ -26,7 +26,8 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="eclipse.p2.data.area"
-        value="${install.root/.p2}">
+        value="${install.root/.p2}"
+        label="P2 location">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
@@ -34,7 +35,8 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="workspace.container.root"
-        value="$${install.root/workspaces}">
+        value="${install.root/workspaces}"
+        label="Workspaces location">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
@@ -43,7 +45,7 @@
         type="FOLDER"
         name="git.container.root"
         value="C:\sources"
-        label="Git sources">
+        label="Git sources location">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>

@@ -142,7 +142,7 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="workspace.location"
-        value="${worspace.container.root/ws-}${scope.project.name}"/>
+        value="${workspace.container.root/ws-}${scope.project.name}"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
