@@ -6,10 +6,8 @@
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
     xmlns:maven="http://www.eclipse.org/oomph/setup/maven/1.0"
-    xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
-    xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 index:/models/SetupWorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore"
     name="chess-tournament"
     label="Chess Tournament">
   <setupTask
@@ -20,7 +18,7 @@
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
-      name="Global variables">
+      name="Variables">
     <setupTask
         xsi:type="setup:CompoundTask"
         name="Github">
@@ -172,38 +170,11 @@
     </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
-        name="installation.id"
-        value="chess-tournament">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        type="FOLDER"
-        name="workspace.location"
-        value="${workspace.container.root/workspace-}${installation.id}"
-        label="Workspace location">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
         type="FOLDER"
         name="git.clone.chesstournament.location"
-        value="${git.container.root/chess-tournament}"
+        value="${git.container.root/}${scope.project.name}"
         label="Project source location">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
       <description>Project source location</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        type="FOLDER"
-        name="installation.location"
-        value="${install.root/chess-tournament}"
-        label="Installation location">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
     </setupTask>
   </setupTask>
   <setupTask
@@ -235,42 +206,9 @@
         vm="true"/>
   </setupTask>
   <setupTask
-      xsi:type="setup:CompoundTask"
-      name="Compiler Preferences">
-    <setupTask
-        xsi:type="setup:PreferenceTask"
-        key="instance/org.eclipse.jdt.launching/org.eclipse.jdt.launching.PREF_STRICTLY_COMPATIBLE_JRE_NOT_AVAILABLE"
-        value="ignore"/>
-    <setupTask
-        xsi:type="setup:PreferenceTask"
-        key="instance/org.eclipse.pde/compilers.f.unresolved-features"
-        value="2"/>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        name="org.eclipse.pde.api.tools">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.pde.api.tools/missing_default_api_profile"
-          value="Ignore"/>
-    </setupTask>
-  </setupTask>
-  <setupTask
-      xsi:type="setup.workingsets:WorkingSetTask">
-    <workingSet
-        name="${scope.project.label}">
-      <predicate
-          xsi:type="predicates:AndPredicate">
-        <operand
-            xsi:type="predicates:RepositoryPredicate"
-            project="eclipse-project"/>
-      </predicate>
-    </workingSet>
-    <description>The dynamic working sets for ${scope.project.label}</description>
-  </setupTask>
-  <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone.chesstournament.all"
-      location="${installation.location/chess-tournament-all}"
+      location="${git.clone.chesstournament.location}"
       remoteURI="holivaw/chess-tournament-all"
       pushURI="">
     <annotation
@@ -293,7 +231,7 @@
   <setupTask
       xsi:type="maven:MavenImportTask">
     <sourceLocator
-        rootFolder="${installation.location/chess-tournament-all}"
+        rootFolder="${git.clone.chesstournament.location}"
         locateNestedProjects="true"/>
   </setupTask>
   <stream name="master"
@@ -301,7 +239,7 @@
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-Doomph.redirection.fr.chess-tournament-all"
-        value="=https://raw.githubusercontent.com/holivaw/chess-tournament-all//master/com.capgemini.ct.setup->${git.clone.chesstournament.location|uri}//com.capgemini.ct.setup"
+        value="=https://raw.githubusercontent.com/holivaw/eclipse-project/master/com.capgemini.ct.setup->${git.clone.chesstournament.location|uri}//com.capgemini.ct.setup"
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
     </setupTask>
