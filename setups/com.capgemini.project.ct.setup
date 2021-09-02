@@ -197,12 +197,12 @@
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-Dfile.encoding"
-        value="UTF-8"
+        value="=UTF-8"
         vm="true"/>
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-Dosgi.bundlefile.limit"
-        value="200"
+        value="=200"
         vm="true"/>
   </setupTask>
   <setupTask
