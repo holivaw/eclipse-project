@@ -124,7 +124,7 @@
         xsi:type="setup:VariableTask"
         type="FOLDER"
         name="workspace.container.root"
-        value="${install.root/workspaces}"
+        value="C:\products\workspaces"
         label="Workspaces location">
       <annotation
           source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
