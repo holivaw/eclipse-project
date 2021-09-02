@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <setup:Project
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
@@ -82,7 +82,7 @@
           </detail>
           <detail
               key="form.parameter.utf8">
-            <value>&#x2713;</value>
+            <value>✓</value>
           </detail>
           <detail
               key="form.parameter.commit">
@@ -231,11 +231,20 @@
   <setupTask
       xsi:type="maven:MavenImportTask">
     <sourceLocator
-        rootFolder="${git.clone.chesstournament.location}"
+        rootFolder="${git.clone.chesstournament.location|uri}"
         locateNestedProjects="true"/>
   </setupTask>
   <stream name="master"
-      label="master"/>
+      label="master">
+    <setupTask
+        xsi:type="setup:EclipseIniTask"
+        disabled="true"
+        option="-Doomph.redirection.chesstournament"
+        value="=https://raw.githubusercontent.com/holivaw/eclipse-project/main/setups/com.capgemini.project.ct.setup->${git.clone.chesstournament.location|uri}/setups/com.capgemini.project.ct.setup"
+        vm="true">
+      <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
+    </setupTask>
+  </stream>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
