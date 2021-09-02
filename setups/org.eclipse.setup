@@ -24,7 +24,9 @@
 	<discoverablePackage href="models/Workbench.ecore#/"/>
 	<discoverablePackage href="models/WorkingSets.ecore#/"/>
 	<productCatalog href="org.eclipse.products.setup#/"/>
+	<projectCatalog href="org.eclipse.projects.setup#/"/>
 	<productCatalog href="com.capgemini.products.setup#/"/>
+	<projectCatalog href="com.capgemini.projects.setup#/"/>
 	<productCatalog href="redirectable.products.setup#/"/>
 	<projectCatalog href="redirectable.projects.setup#/"/>
 </setup:Index>
